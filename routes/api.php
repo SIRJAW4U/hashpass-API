@@ -21,9 +21,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // PUBLIC ROUTES
 Route::post('/sign-up', [AuthController::class, 'signUp']);
+Route::post('/sign-in', [AuthController::class, 'signIn']);
 
 
 // PROTECTED ROUTES
 Route::group(['middleware' => ['auth:sanctum']], function () {
-
+    Route::post('/sign-out', [AuthController::class, 'signOut']);
 });
